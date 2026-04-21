@@ -1,24 +1,26 @@
 package com.example.simpleWebApp.Model;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
+@Entity
 public class Product {
 
-    private  int pId;
+    @Id
+    private int prodId;
+
     private String productName;
-//    private  String productCategory;
     private int price;
 
-    public Product(int pId, String productName, int price) {
-        this.pId = pId;
-        this.productName = productName;
-        this.price = price;
+    public Product() {
     }
 
-    public int getpId() {
-        return pId;
+    public int getProdId() {
+        return prodId;
     }
 
-    public void setpId(int pId) {
-        this.pId = pId;
+    public void setProdId(int prodId) {
+        this.prodId = prodId;
     }
 
     public String getProductName() {

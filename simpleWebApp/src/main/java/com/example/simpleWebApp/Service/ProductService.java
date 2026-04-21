@@ -1,24 +1,37 @@
 package com.example.simpleWebApp.Service;
 
 import com.example.simpleWebApp.Model.Product;
+import com.example.simpleWebApp.Repo.ProductRepo;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service
 public class ProductService {
 
+    private final ProductRepo repo;
 
-    List<Product> products = Arrays.asList(
-            new Product(1,"Iphone",200),
-            new Product(2,"Samsung", 199),
-            new Product(3,"Redmi", 202)
+    public ProductService(ProductRepo repo) {
+        this.repo = repo;
+    }
 
+    public List<Product> getProducts() {
+        return repo.findAll();
+    }
 
-    );
-        public List<Product> getProducts(){
-            return products;
-        }
+    public Product getProductById(int prodId) {
+        return repo.findById(prodId).orElse(null);
+    }
+
+    public void addProduct(Product prod) {
+        repo.save(prod);
+    }
+
+    public void updateProduct(Product prod) {
+        repo.save(prod);
+    }
+
+    public void deleteProduct(int prodId) {
+        repo.deleteById(prodId);
+    }
 }
